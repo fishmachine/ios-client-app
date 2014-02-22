@@ -20,6 +20,18 @@
 		185DFC8B18B94C350012BE27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFC6D18B94C350012BE27 /* UIKit.framework */; };
 		185DFC9318B94C350012BE27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 185DFC9118B94C350012BE27 /* InfoPlist.strings */; };
 		185DFC9518B94C350012BE27 /* FishBitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DFC9418B94C350012BE27 /* FishBitTests.m */; };
+		185DFCA318B957360012BE27 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCA218B957360012BE27 /* Parse.framework */; };
+		185DFCA518B9575D0012BE27 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCA418B9575D0012BE27 /* AudioToolbox.framework */; };
+		185DFCA718B957650012BE27 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCA618B957650012BE27 /* CFNetwork.framework */; };
+		185DFCA918B957770012BE27 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCA818B957770012BE27 /* CoreLocation.framework */; };
+		185DFCAB18B957810012BE27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCAA18B957810012BE27 /* libz.dylib */; };
+		185DFCAD18B9578B0012BE27 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCAC18B9578B0012BE27 /* MobileCoreServices.framework */; };
+		185DFCAF18B957B00012BE27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCAE18B957B00012BE27 /* QuartzCore.framework */; };
+		185DFCB118B957B90012BE27 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCB018B957B90012BE27 /* Security.framework */; };
+		185DFCB318B957C30012BE27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCB218B957C30012BE27 /* StoreKit.framework */; };
+		185DFCB518B957D00012BE27 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DFCB418B957D00012BE27 /* SystemConfiguration.framework */; };
+		185DFCB818B9584D0012BE27 /* FBOverviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DFCB718B9584D0012BE27 /* FBOverviewVC.m */; };
+		1CFEE69E8E75480FA6FD3B45 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3277807825CD4E93BBDCC361 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +62,20 @@
 		185DFC9018B94C350012BE27 /* FishBitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FishBitTests-Info.plist"; sourceTree = "<group>"; };
 		185DFC9218B94C350012BE27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		185DFC9418B94C350012BE27 /* FishBitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishBitTests.m; sourceTree = "<group>"; };
+		185DFCA218B957360012BE27 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		185DFCA418B9575D0012BE27 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		185DFCA618B957650012BE27 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		185DFCA818B957770012BE27 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		185DFCAA18B957810012BE27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		185DFCAC18B9578B0012BE27 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		185DFCAE18B957B00012BE27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		185DFCB018B957B90012BE27 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		185DFCB218B957C30012BE27 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		185DFCB418B957D00012BE27 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		185DFCB618B9584D0012BE27 /* FBOverviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBOverviewVC.h; path = "../../FishBit/FishBit/code/view controllers/FBOverviewVC.h"; sourceTree = "<group>"; };
+		185DFCB718B9584D0012BE27 /* FBOverviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBOverviewVC.m; path = "../../FishBit/FishBit/code/view controllers/FBOverviewVC.m"; sourceTree = "<group>"; };
+		3277807825CD4E93BBDCC361 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD599A8536645D8877F2E16 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +83,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185DFCB518B957D00012BE27 /* SystemConfiguration.framework in Frameworks */,
+				185DFCB318B957C30012BE27 /* StoreKit.framework in Frameworks */,
+				185DFCB118B957B90012BE27 /* Security.framework in Frameworks */,
+				185DFCAF18B957B00012BE27 /* QuartzCore.framework in Frameworks */,
+				185DFCAD18B9578B0012BE27 /* MobileCoreServices.framework in Frameworks */,
+				185DFCAB18B957810012BE27 /* libz.dylib in Frameworks */,
+				185DFCA918B957770012BE27 /* CoreLocation.framework in Frameworks */,
 				185DFC6C18B94C350012BE27 /* CoreGraphics.framework in Frameworks */,
+				185DFCA718B957650012BE27 /* CFNetwork.framework in Frameworks */,
+				185DFCA518B9575D0012BE27 /* AudioToolbox.framework in Frameworks */,
 				185DFC6E18B94C350012BE27 /* UIKit.framework in Frameworks */,
 				185DFC6A18B94C350012BE27 /* Foundation.framework in Frameworks */,
+				1CFEE69E8E75480FA6FD3B45 /* libPods.a in Frameworks */,
+				185DFCA318B957360012BE27 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +120,7 @@
 				185DFC8E18B94C350012BE27 /* FishBitTests */,
 				185DFC6818B94C350012BE27 /* Frameworks */,
 				185DFC6718B94C350012BE27 /* Products */,
+				DAD599A8536645D8877F2E16 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,10 +136,21 @@
 		185DFC6818B94C350012BE27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185DFCB418B957D00012BE27 /* SystemConfiguration.framework */,
+				185DFCB218B957C30012BE27 /* StoreKit.framework */,
+				185DFCB018B957B90012BE27 /* Security.framework */,
+				185DFCAE18B957B00012BE27 /* QuartzCore.framework */,
+				185DFCAC18B9578B0012BE27 /* MobileCoreServices.framework */,
+				185DFCAA18B957810012BE27 /* libz.dylib */,
+				185DFCA818B957770012BE27 /* CoreLocation.framework */,
+				185DFCA618B957650012BE27 /* CFNetwork.framework */,
+				185DFCA418B9575D0012BE27 /* AudioToolbox.framework */,
+				185DFCA218B957360012BE27 /* Parse.framework */,
 				185DFC6918B94C350012BE27 /* Foundation.framework */,
 				185DFC6B18B94C350012BE27 /* CoreGraphics.framework */,
 				185DFC6D18B94C350012BE27 /* UIKit.framework */,
 				185DFC8818B94C350012BE27 /* XCTest.framework */,
+				3277807825CD4E93BBDCC361 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,6 +217,8 @@
 		185DFCA018B94C900012BE27 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				185DFCB618B9584D0012BE27 /* FBOverviewVC.h */,
+				185DFCB718B9584D0012BE27 /* FBOverviewVC.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -186,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 185DFC9818B94C350012BE27 /* Build configuration list for PBXNativeTarget "FishBit" */;
 			buildPhases = (
+				2BBFCB78F238417EA9E8755A /* Check Pods Manifest.lock */,
 				185DFC6218B94C350012BE27 /* Sources */,
 				185DFC6318B94C350012BE27 /* Frameworks */,
 				185DFC6418B94C350012BE27 /* Resources */,
+				8F16EAC5A6B54CABB1071C0D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,7 +285,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 185DFC6118B94C350012BE27 /* Build configuration list for PBXProject "FishBit" */;
+			buildConfigurationList = 185DFC6118B94C350012BE27 /* Build configuration list for PBXProject "Fishbit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -272,6 +325,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BBFCB78F238417EA9E8755A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8F16EAC5A6B54CABB1071C0D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		185DFC6218B94C350012BE27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -279,6 +365,7 @@
 			files = (
 				185DFC7A18B94C350012BE27 /* FBAppDelegate.m in Sources */,
 				185DFC7618B94C350012BE27 /* main.m in Sources */,
+				185DFCB818B9584D0012BE27 /* FBOverviewVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,12 +489,29 @@
 		};
 		185DFC9918B94C350012BE27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAD599A8536645D8877F2E16 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/nathanlevine/Desktop/Github/FishBit/ios-client-app/Fishbit",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FishBit/FishBit-Prefix.pch";
 				INFOPLIST_FILE = "FishBit/FishBit-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -415,12 +519,29 @@
 		};
 		185DFC9A18B94C350012BE27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAD599A8536645D8877F2E16 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/nathanlevine/Desktop/Github/FishBit/ios-client-app/Fishbit",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FishBit/FishBit-Prefix.pch";
 				INFOPLIST_FILE = "FishBit/FishBit-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -471,7 +592,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		185DFC6118B94C350012BE27 /* Build configuration list for PBXProject "FishBit" */ = {
+		185DFC6118B94C350012BE27 /* Build configuration list for PBXProject "Fishbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				185DFC9618B94C350012BE27 /* Debug */,
@@ -487,6 +608,7 @@
 				185DFC9A18B94C350012BE27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		185DFC9B18B94C350012BE27 /* Build configuration list for PBXNativeTarget "FishBitTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +617,7 @@
 				185DFC9D18B94C350012BE27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
