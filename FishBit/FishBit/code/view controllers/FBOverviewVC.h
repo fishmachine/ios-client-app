@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FBOverviewVC : UIViewController
+@interface FBOverviewVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

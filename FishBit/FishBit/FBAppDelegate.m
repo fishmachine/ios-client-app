@@ -17,6 +17,7 @@
                   clientKey:@"6bisSacfAmzFSzcZcuuqW7x5PF2n7nhSOc3xj5vZ"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     // Override point for customization after application launch.
     return YES;
 }
