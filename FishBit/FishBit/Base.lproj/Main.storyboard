@@ -54,12 +54,12 @@
                                     <constraint firstAttribute="height" constant="30" id="82a-Zt-vbM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="De0-Tw-IgW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="De0-Tw-IgW">
                                 <rect key="frame" x="0.0" y="212" width="320" height="356"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="60" id="KGy-ud-Edp" customClass="FBOverviewCells">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="60" id="KGy-ud-Edp" customClass="FBOverviewCells">
                                         <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGy-ud-Edp" id="47p-O8-rrH">
@@ -96,6 +96,7 @@
                                             <outlet property="cellDetailLabel" destination="rQa-hr-fn2" id="lvN-Rv-8F5"/>
                                             <outlet property="cellImageView" destination="tTh-9f-NwT" id="wQb-f2-1ih"/>
                                             <outlet property="cellScoreLabel" destination="8H0-2M-CBO" id="FLq-CL-xGs"/>
+                                            <segue destination="gL5-8d-S2Q" kind="push" identifier="cellToGraphVC" id="pXm-qy-51y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -129,7 +130,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YB-n7-0qm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3625" y="63"/>
+            <point key="canvasLocation" x="2466" y="73"/>
+        </scene>
+        <!--Individual Level View Controller-->
+        <scene sceneID="nro-Da-g4f">
+            <objects>
+                <viewController id="gL5-8d-S2Q" customClass="FBIndividualLevelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="akM-CA-kQr"/>
+                        <viewControllerLayoutGuide type="bottom" id="ANG-y0-G2r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zdQ-Jf-NOS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eY3-Uy-vTe">
+                                <rect key="frame" x="18" y="89" width="285" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Rln-5z-Zq5"/>
+                                </constraints>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eY3-Uy-vTe" firstAttribute="leading" secondItem="zdQ-Jf-NOS" secondAttribute="leading" constant="18" id="20g-Cz-G8D"/>
+                            <constraint firstItem="eY3-Uy-vTe" firstAttribute="top" secondItem="akM-CA-kQr" secondAttribute="bottom" constant="25" id="CV4-rc-12Z"/>
+                            <constraint firstAttribute="trailing" secondItem="eY3-Uy-vTe" secondAttribute="trailing" constant="17" id="y2U-vm-RGi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SRm-K0-ETj"/>
+                    <connections>
+                        <outlet property="chartWebView" destination="eY3-Uy-vTe" id="guG-om-p3d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Z3-5e-cXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2912" y="59"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KQJ-cw-4Se">
@@ -147,7 +185,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bqs-sr-6Ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3027" y="63"/>
+            <point key="canvasLocation" x="1868" y="73"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

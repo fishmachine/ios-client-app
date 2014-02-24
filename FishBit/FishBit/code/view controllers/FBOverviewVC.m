@@ -16,6 +16,7 @@
 #import <Parse/Parse.h>
 #import "ATFishDataObject.h"
 #import "FBOverviewCells.h"
+#import "FBIndividualLevelViewController.h"
 
 @interface FBOverviewVC ()
 {
@@ -73,11 +74,12 @@
     ATFishDataObject *fishObject = [ATFishDataObject new];
     fishObject.temperatureLevel = 72.4;
     fishObject.pHLevel = 8.3;
-    fishObject.salinityLevel = 1.024;
+    fishObject.salinityLevel = 1.026;
     self.arrayOfFishDataObjects = [NSMutableArray new];
     [self.arrayOfFishDataObjects addObject:fishObject];
     
     [tableViewOfFishData reloadData];
+    [self adjustStabilityScore];
 }
 
 #pragma mark - Tableview Datasource
@@ -144,6 +146,88 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
+}
+
+#pragma mark - Stability Score
+
+- (CGFloat)calculateStabilityScore:(ATFishDataObject*)fishObject
+{
+    //arbitrary starting score
+    CGFloat score = 9.543;
+    
+    //algo for calculating score, will change.
+    
+    //if current levels are good multiply * 1, ok multiply * .85, bad multiply * .5
+    if (fishObject.salinityLevel >= 1.024 && fishObject.salinityLevel <= 1.025) {
+        score = score * 1;
+    } else if (fishObject.salinityLevel >= 1.022 && fishObject.salinityLevel <= 1.02399999) {
+        score = score * .85;
+    } else if (fishObject.salinityLevel >= 1.02500001 && fishObject.salinityLevel <= 1.0270001) {
+        score = score * .85;
+    } else if (fishObject.salinityLevel < 1.025 || fishObject.salinityLevel > 1.027) {
+        score = score * .7;
+    }
+    //for pHlevel
+    if (fishObject.pHLevel >= 8.0 && fishObject.pHLevel <= 8.4) {
+        score = score * 1;
+    } else if (fishObject.pHLevel >= 6.9 && fishObject.pHLevel <= 7.9999) {
+        score = score * .85;
+    } else if (fishObject.pHLevel >= 8.4001 && fishObject.pHLevel <= 8.5) {
+        score = score * .85;
+    } else if (fishObject.pHLevel < 6.999 || fishObject.pHLevel > 8.50001) {
+        score = score * .7;
+    }
+    
+    if (fishObject.temperatureLevel >= 75 && fishObject.temperatureLevel <= 80) {
+        score = score * 1;
+    } else if (fishObject.temperatureLevel >= 73 && fishObject.temperatureLevel <= 74.999) {
+        score = score * .85;
+    } else if (fishObject.temperatureLevel >= 80.001 && fishObject.temperatureLevel <= 82) {
+        score = score * .85;
+    } else if (fishObject.temperatureLevel < 72.99 || fishObject.temperatureLevel >82.0001) {
+        score = score * .7;
+    }
+    
+    //if tank has stayed constant for a while multiply by XX >1 amount else multiply by XX amount <1
+//    if (fishObject.fluctuationAmount =) {
+//        <#statements#>
+//    }
+    
+    return score;
+}
+
+- (void)adjustStabilityScore
+{
+    CGFloat score = [self calculateStabilityScore:(ATFishDataObject*)[self.arrayOfFishDataObjects objectAtIndex:0]];
+    stabilityScoreLabel.text = [NSString stringWithFormat:@"%.1f", score];
+    
+    if (score >= 9) {
+        stabilityScoreLabel.textColor = [UIColor greenColor];
+    } else if (score >= 7 && score < 9) {
+        stabilityScoreLabel.textColor = [UIColor yellowColor];
+    } else if (score < 7) {
+        stabilityScoreLabel.textColor = [UIColor redColor];
+    }
+}
+
+#pragma mark - Segues
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *index = [tableViewOfFishData indexPathForSelectedRow];
+
+    if ([segue.identifier isEqualToString:SEGUE_OVERVIEW_TO_GRAPH_VC]) {
+        
+        FBIndividualLevelViewController *ILVC = [segue destinationViewController];
+        
+        if (index.row == 0) {
+            ILVC.title = @"Temperature";
+        } else if (index.row == 1) {
+            ILVC.title = @"pH";
+        } else if (index.row == 2) {
+            ILVC.title = @"Salinity";
+        }
+    }
 }
 
 

@@ -20,6 +20,6 @@
 
 
 /*SEGUES*/
-#define SEGUE_SPLASH_TO_DATA_VC @"splashToDataVCSegue"
+#define SEGUE_OVERVIEW_TO_GRAPH_VC @"cellToGraphVC"
 
 #endif

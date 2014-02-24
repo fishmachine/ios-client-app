@@ -39,7 +39,7 @@
     
     if (fishObject.pHLevel >= 8.0 && fishObject.pHLevel <= 8.4) {
         cellImageView.image = [UIImage imageNamed:@"happyFace.png"];
-    } else if (fishObject.pHLevel >= 7.9 && fishObject.pHLevel <= 7.9999) {
+    } else if (fishObject.pHLevel >= 6.9 && fishObject.pHLevel <= 7.9999) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
     } else if (fishObject.pHLevel >= 8.4001 && fishObject.pHLevel <= 8.5) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
@@ -48,6 +48,7 @@
     } else if (fishObject.pHLevel > 8.50001) {
         cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
     }
+    
 }
 
 - (void)configureTemperatureCell:(ATFishDataObject *)fishObject
