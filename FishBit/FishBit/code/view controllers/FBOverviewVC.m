@@ -17,6 +17,7 @@
 #import "ATFishDataObject.h"
 #import "FBOverviewCells.h"
 #import "FBIndividualLevelViewController.h"
+#import "UIColor+FBColors.h"
 
 @interface FBOverviewVC ()
 {
@@ -25,7 +26,12 @@
     __weak IBOutlet UILabel *dateLabel;
 
     __weak IBOutlet UITableView *tableViewOfFishData;
+    __weak IBOutlet UILabel *lastCheckedLabel;
+    
+    __weak IBOutlet UIActivityIndicatorView *spindicator;
+    NSDate *dateLastSynced;
 }
+- (IBAction)syncAction:(id)sender;
 
 @property (nonatomic, strong) NSMutableArray *arrayOfFishDataObjects;
 
@@ -49,7 +55,8 @@
 	// Do any additional setup after loading the view.
     
     [self setUpAppearances];
-    [self addDummyDataToArray];
+
+    [self queryParseForObjects];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,21 +72,55 @@
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setDateFormat:@"yyyy-MM-dd"];
     dateLabel.text = [f stringFromDate:[NSDate date]];
+    dateLabel.textColor = [UIColor FBHealthyBlueColor];
+    
+    stabilityScoreWordsLabel.textColor = [UIColor FBGrey];
+    
+    spindicator.tintColor = [UIColor FBHealthyBlueColor];
 }
 
 #pragma mark - Data logic
 
-- (void)addDummyDataToArray
+- (void)reloadDataViews
 {
-    ATFishDataObject *fishObject = [ATFishDataObject new];
-    fishObject.temperatureLevel = 72.4;
-    fishObject.pHLevel = 8.3;
-    fishObject.salinityLevel = 1.026;
-    self.arrayOfFishDataObjects = [NSMutableArray new];
-    [self.arrayOfFishDataObjects addObject:fishObject];
-    
     [tableViewOfFishData reloadData];
     [self adjustStabilityScore];
+    if (dateLastSynced) {
+        [self setLastCheckedDate];
+    }
+}
+
+- (void)queryParseForObjects
+{
+    [spindicator startAnimating];
+    PFQuery *query = [PFQuery queryWithClassName:@"Proto1"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 50;
+    self.arrayOfFishDataObjects = [NSMutableArray new];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *dataPointsArray, NSError *error) {
+        // Now you have the last fitty
+        [dataPointsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            PFObject *individualDataPoint = obj;
+            ATFishDataObject *fishDataPoint = [ATFishDataObject new];
+            fishDataPoint.ecLevel = [[individualDataPoint objectForKey:@"ec"] integerValue] / 100.0;
+            fishDataPoint.temperatureLevel = [[individualDataPoint objectForKey:@"temp"] floatValue];
+            fishDataPoint.pHLevel = [[individualDataPoint objectForKey:@"ph"] floatValue];
+            [self.arrayOfFishDataObjects addObject:fishDataPoint];
+        }];
+        
+        dateLastSynced = [NSDate date];
+        [self reloadDataViews];
+        [spindicator stopAnimating];
+
+    }];
+}
+
+- (void)setLastCheckedDate
+{
+    NSDateFormatter *df = [NSDateFormatter new];
+    [df setDateFormat:@"MMM dd, yyyy HH:mm"];
+    NSString *dateLastCheckedString = [df stringFromDate:dateLastSynced];
+    lastCheckedLabel.text = [NSString stringWithFormat:@"Last checked: %@", dateLastCheckedString];
 }
 
 #pragma mark - Tableview Datasource
@@ -87,7 +128,7 @@
 {
     switch (section) {
         case FISH_DATA_SECTION:
-            return 3;
+            return (self.arrayOfFishDataObjects.count > 0) ? 3 : 0;
             break;
             
         default:
@@ -117,7 +158,7 @@
                     break;
                     
                 case SALINITY_CELL:
-                    [cell configureSalinityCell:fishObject];
+                    [cell configureECCell:fishObject];
                     return cell;
                     break;
                     
@@ -158,13 +199,14 @@
     //algo for calculating score, will change.
     
     //if current levels are good multiply * 1, ok multiply * .85, bad multiply * .5
-    if (fishObject.salinityLevel >= 1.024 && fishObject.salinityLevel <= 1.025) {
-        score = score * 1;
-    } else if (fishObject.salinityLevel >= 1.022 && fishObject.salinityLevel <= 1.02399999) {
+
+    if (fishObject.ecLevel >= 51.7 && fishObject.ecLevel <= 54.4) {
+        score = score * 1.1;
+    } else if (fishObject.ecLevel >= 48.6 && fishObject.ecLevel < 51.7) {
         score = score * .85;
-    } else if (fishObject.salinityLevel >= 1.02500001 && fishObject.salinityLevel <= 1.0270001) {
+    } else if (fishObject.ecLevel > 54.4 && fishObject.ecLevel <= 56.5) {
         score = score * .85;
-    } else if (fishObject.salinityLevel < 1.025 || fishObject.salinityLevel > 1.027) {
+    } else if (fishObject.ecLevel < 48.6 || fishObject.ecLevel > 56.5) {
         score = score * .7;
     }
     //for pHlevel
@@ -202,11 +244,11 @@
     stabilityScoreLabel.text = [NSString stringWithFormat:@"%.1f", score];
     
     if (score >= 9) {
-        stabilityScoreLabel.textColor = [UIColor greenColor];
+        stabilityScoreLabel.textColor = [UIColor FBHealthyBlueColor];
     } else if (score >= 7 && score < 9) {
-        stabilityScoreLabel.textColor = [UIColor yellowColor];
+        stabilityScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
     } else if (score < 7) {
-        stabilityScoreLabel.textColor = [UIColor redColor];
+        stabilityScoreLabel.textColor = [UIColor FBUnHealthyGreenColor];
     }
 }
 
@@ -230,5 +272,10 @@
     }
 }
 
+#pragma mark - Actions
 
+- (IBAction)syncAction:(id)sender
+{
+    [self queryParseForObjects];
+}
 @end

@@ -12,11 +12,8 @@
 
 @property CGFloat temperatureLevel;
 @property CGFloat pHLevel;
-@property CGFloat ammoniaLevel;
-@property CGFloat nitriteLevel;
-@property CGFloat nitrateLevel;
 @property CGFloat salinityLevel;
-@property CGFloat phosphatesLevel;
+@property CGFloat ecLevel;
 
 
 @end

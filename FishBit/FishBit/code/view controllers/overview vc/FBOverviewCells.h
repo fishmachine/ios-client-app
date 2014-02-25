@@ -13,6 +13,6 @@
 
 - (void)configurePHCell:(ATFishDataObject *)fishObject;
 - (void)configureTemperatureCell:(ATFishDataObject *)fishObject;
-- (void)configureSalinityCell:(ATFishDataObject *)fishObject;
+- (void)configureECCell:(ATFishDataObject *)fishObject;
 
 @end

@@ -37,6 +37,7 @@
 		185DFCBC18BAD02C0012BE27 /* FBOverviewCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DFCBB18BAD02C0012BE27 /* FBOverviewCells.m */; };
 		185DFCC018BAD1340012BE27 /* ATFishDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DFCBF18BAD1340012BE27 /* ATFishDataObject.m */; };
 		1864069318BAF4AA00B3BB2F /* fishbit-app-logo-v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864069218BAF4AA00B3BB2F /* fishbit-app-logo-v2.png */; };
+		186B91C818BC319B00389FCC /* UIColor+FBColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 186B91C718BC319B00389FCC /* UIColor+FBColors.m */; };
 		18AEC8F418BAFBD4009DA586 /* happyFace.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AEC8F118BAFBD4009DA586 /* happyFace.png */; };
 		18AEC8F518BAFBD4009DA586 /* neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AEC8F218BAFBD4009DA586 /* neutral.png */; };
 		18AEC8F618BAFBD4009DA586 /* sadFace.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AEC8F318BAFBD4009DA586 /* sadFace.png */; };
@@ -93,6 +94,8 @@
 		185DFCBE18BAD1340012BE27 /* ATFishDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFishDataObject.h; sourceTree = "<group>"; };
 		185DFCBF18BAD1340012BE27 /* ATFishDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATFishDataObject.m; sourceTree = "<group>"; };
 		1864069218BAF4AA00B3BB2F /* fishbit-app-logo-v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fishbit-app-logo-v2.png"; sourceTree = "<group>"; };
+		186B91C618BC319B00389FCC /* UIColor+FBColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+FBColors.h"; path = "../../FishBit/FishBit/code/Custom objects/Categories/constant categories/UIColor+FBColors.h"; sourceTree = "<group>"; };
+		186B91C718BC319B00389FCC /* UIColor+FBColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FBColors.m"; path = "../../FishBit/FishBit/code/Custom objects/Categories/constant categories/UIColor+FBColors.m"; sourceTree = "<group>"; };
 		18AEC8F118BAFBD4009DA586 /* happyFace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happyFace.png; sourceTree = "<group>"; };
 		18AEC8F218BAFBD4009DA586 /* neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = neutral.png; sourceTree = "<group>"; };
 		18AEC8F318BAFBD4009DA586 /* sadFace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sadFace.png; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 		185DFCA118B94C980012BE27 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
+				186B91C418BC316300389FCC /* Categories */,
 				185DFCC218BAD14C0012BE27 /* Constants */,
 				185DFCC118BAD1380012BE27 /* Fish Objects */,
 			);
@@ -312,6 +316,23 @@
 				185DFCBD18BAD11E0012BE27 /* ATConstants.h */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		186B91C418BC316300389FCC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				186B91C518BC316800389FCC /* Constants Categories */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		186B91C518BC316800389FCC /* Constants Categories */ = {
+			isa = PBXGroup;
+			children = (
+				186B91C618BC319B00389FCC /* UIColor+FBColors.h */,
+				186B91C718BC319B00389FCC /* UIColor+FBColors.m */,
+			);
+			name = "Constants Categories";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,6 +478,7 @@
 				185DFC7618B94C350012BE27 /* main.m in Sources */,
 				185DFCC018BAD1340012BE27 /* ATFishDataObject.m in Sources */,
 				185DFCBC18BAD02C0012BE27 /* FBOverviewCells.m in Sources */,
+				186B91C818BC319B00389FCC /* UIColor+FBColors.m in Sources */,
 				184FE15418BB0BB300D2216A /* FBIndividualLevelViewController.m in Sources */,
 				185DFCB818B9584D0012BE27 /* FBOverviewVC.m in Sources */,
 			);

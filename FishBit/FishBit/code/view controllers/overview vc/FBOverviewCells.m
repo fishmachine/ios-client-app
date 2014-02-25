@@ -7,6 +7,7 @@
 //
 
 #import "FBOverviewCells.h"
+#import "UIColor+FBColors.h"
 
 @implementation FBOverviewCells
 {
@@ -14,6 +15,7 @@
     __weak IBOutlet UILabel *cellDetailLabel;
     __weak IBOutlet UILabel *cellScoreLabel;
     
+    __weak IBOutlet UILabel *cellUnitLabel;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -36,59 +38,97 @@
 {
     cellScoreLabel.text = [NSString stringWithFormat:@"%.2f", fishObject.pHLevel];
     cellDetailLabel.text = @"pH";
+    cellUnitLabel.text = @"";
+    cellUnitLabel.textColor = [UIColor FBGrey];
+
     
     if (fishObject.pHLevel >= 8.0 && fishObject.pHLevel <= 8.4) {
         cellImageView.image = [UIImage imageNamed:@"happyFace.png"];
+        cellDetailLabel.textColor = [UIColor FBHealthyBlueColor];
+        cellScoreLabel.textColor = [UIColor FBHealthyBlueColor];
     } else if (fishObject.pHLevel >= 6.9 && fishObject.pHLevel <= 7.9999) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
+        cellDetailLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
     } else if (fishObject.pHLevel >= 8.4001 && fishObject.pHLevel <= 8.5) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
-    } else if (fishObject.pHLevel < 6.999) {
+        cellDetailLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+    } else if (fishObject.pHLevel < 6.999 || fishObject.pHLevel > 8.50001) {
         cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
-    } else if (fishObject.pHLevel > 8.50001) {
-        cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
+        cellDetailLabel.textColor = [UIColor FBUnHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBUnHealthyGreenColor];
     }
+
     
 }
 
 - (void)configureTemperatureCell:(ATFishDataObject *)fishObject
 {
-    cellScoreLabel.text = [NSString stringWithFormat:@"%.2f", fishObject.temperatureLevel];
+    cellScoreLabel.text = [NSString stringWithFormat:@"%.2f", [self getFahrenheitFromCelsius:fishObject.temperatureLevel]];
     cellDetailLabel.text = @"Temperature";
+    cellUnitLabel.text = @"°F";
+    cellUnitLabel.textColor = [UIColor FBGrey];
     
     
     if (fishObject.temperatureLevel >= 75 && fishObject.temperatureLevel <= 80) {
         cellImageView.image = [UIImage imageNamed:@"happyFace.png"];
+        cellDetailLabel.textColor = [UIColor FBHealthyBlueColor];
+        cellScoreLabel.textColor = [UIColor FBHealthyBlueColor];
     } else if (fishObject.temperatureLevel >= 73 && fishObject.temperatureLevel <= 74.999) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
+        cellDetailLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
     } else if (fishObject.temperatureLevel >= 80.001 && fishObject.temperatureLevel <= 82) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
-    } else if (fishObject.temperatureLevel < 72.99) {
+        cellDetailLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+    } else if (fishObject.temperatureLevel < 72.99 || fishObject.temperatureLevel >82.0001) {
         cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
-    } else if (fishObject.temperatureLevel >82.0001) {
-        cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
+        cellDetailLabel.textColor = [UIColor FBUnHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBUnHealthyGreenColor];
     }
-
 
 }
 
-- (void)configureSalinityCell:(ATFishDataObject *)fishObject
+- (void)configureECCell:(ATFishDataObject *)fishObject
 {
-    cellScoreLabel.text = [NSString stringWithFormat:@"%.4f", fishObject.salinityLevel];
-    cellDetailLabel.text = @"Salinity";
+    cellScoreLabel.text = [NSString stringWithFormat:@"%.2f", fishObject.ecLevel];
+    cellDetailLabel.text = @"Electrical Current";
+    cellUnitLabel.text = @"mS/cm";
+    cellUnitLabel.textColor = [UIColor FBGrey];
+
     
-    if (fishObject.salinityLevel >= 1.024 && fishObject.salinityLevel <= 1.025) {
+    if (fishObject.ecLevel >= 51.7 && fishObject.ecLevel <= 54.4) {
         cellImageView.image = [UIImage imageNamed:@"happyFace.png"];
-    } else if (fishObject.salinityLevel >= 1.022 && fishObject.salinityLevel <= 1.02399999) {
+        cellDetailLabel.textColor = [UIColor FBHealthyBlueColor];
+        cellScoreLabel.textColor = [UIColor FBHealthyBlueColor];
+    } else if (fishObject.ecLevel >= 48.6 && fishObject.ecLevel < 51.7) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
-    } else if (fishObject.salinityLevel >= 1.02500001 && fishObject.salinityLevel <= 1.0270001) {
+        cellDetailLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+    } else if (fishObject.ecLevel > 54.4 && fishObject.ecLevel <= 56.5) {
         cellImageView.image = [UIImage imageNamed:@"neutral.png"];
-    } else if (fishObject.salinityLevel < 1.025) {
+        cellDetailLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBMildlyHealthyGreenColor];
+    } else if (fishObject.ecLevel < 48.6 || fishObject.ecLevel > 56.5) {
         cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
-    } else if (fishObject.salinityLevel > 1.027) {
-        cellImageView.image = [UIImage imageNamed:@"sadFace.png"];
+        cellDetailLabel.textColor = [UIColor FBUnHealthyGreenColor];
+        cellScoreLabel.textColor = [UIColor FBUnHealthyGreenColor];
     }
 
+}
+
+#pragma mark - logic
+
+- (void)convertElectricalConductivtyIntoSpecificGravity
+{
+    //nope
+}
+
+- (CGFloat)getFahrenheitFromCelsius:(CGFloat)celsius
+{
+    return (((celsius * 9) / 5) + 32);
 }
 
 @end
