@@ -88,7 +88,8 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 
 - (void)setUpChartViews
 {
-    self.view.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:169.0f/255.0f blue:216.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor whiteColor];
+    //[UIColor colorWithRed:0.0f/255.0f green:169.0f/255.0f blue:216.0f/255.0f alpha:1];
     //self.navigationItem.rightBarButtonItem = [self chartToggleButtonWithTarget:self action:@selector(chartToggleButtonPressed:)];
     
     self.lineChartView = [[JBLineChartView alloc] init];
@@ -100,32 +101,32 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
     
     JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
     headerView.titleLabel.text = [self.titleString uppercaseString];
-    headerView.titleLabel.textColor = [UIColor whiteColor];
+    headerView.titleLabel.textColor = [UIColor FBHealthyBlueColor];
     headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.40];
     headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
     headerView.subtitleLabel.text = [self.unitString uppercaseString];
-    headerView.subtitleLabel.textColor = [UIColor whiteColor];
+    headerView.subtitleLabel.textColor = [UIColor FBHealthyBlueColor];
     headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.405];
     headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.separatorColor = [UIColor whiteColor];
+    headerView.separatorColor = [UIColor FBHealthyBlueColor];
     self.lineChartView.headerView = headerView;
     
     JBLineChartFooterView *footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartFooterHeight)];
     footerView.backgroundColor = [UIColor clearColor];
     footerView.leftLabel.text = self.leftMostNumberString;
-    footerView.leftLabel.textColor = [UIColor whiteColor];
+    footerView.leftLabel.textColor = [UIColor FBHealthyBlueColor];
     footerView.rightLabel.text = self.rightMostString;
-    footerView.rightLabel.textColor = [UIColor whiteColor];
+    footerView.rightLabel.textColor = [UIColor FBHealthyBlueColor];
     footerView.sectionCount = kJBLineChartViewControllerNumChartPoints;
     self.lineChartView.footerView = footerView;
     
     [self.view addSubview:self.lineChartView];
     
     self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame)) layout:JBChartInformationViewLayoutVertical];
-    [self.informationView setValueAndUnitTextColor:[UIColor whiteColor]];
-    [self.informationView setTitleTextColor:[UIColor whiteColor]];
+    [self.informationView setValueAndUnitTextColor:[UIColor FBHealthyBlueColor]];
+    [self.informationView setTitleTextColor:[UIColor FBHealthyBlueColor]];
     [self.informationView setTextShadowColor:nil];
-    [self.informationView setSeparatorColor:[UIColor whiteColor]];
+    [self.informationView setSeparatorColor:[UIColor FBHealthyBlueColor]];
     [self.view addSubview:self.informationView];
     
     [self.lineChartView reloadData];
@@ -178,7 +179,7 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 
 - (UIColor *)lineColorForLineChartView:(JBLineChartView *)lineChartView
 {
-    return kJBColorLineChartLineColor;
+    return [UIColor FBHealthyBlueColor];//kJBColorLineChartLineColor;
 }
 
 - (CGFloat)lineWidthForLineChartView:(JBLineChartView *)lineChartView
@@ -188,7 +189,7 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 
 - (UIColor *)selectionColorForLineChartView:(JBLineChartView *)lineChartView
 {
-    return [UIColor whiteColor];
+    return [UIColor FBHealthyBlueColor];
 }
 
 @end
