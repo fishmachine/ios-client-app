@@ -10,9 +10,18 @@
 #import "ATFishDataObject.h"
 
 @interface FBOverviewCells : UITableViewCell
+{
+    
+}
+@property (strong, nonatomic) IBOutlet UILabel *cellScoreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellUnitLabel;
+@property (strong, nonatomic) IBOutlet UILabel *cellDetailLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
 
 - (void)configurePHCell:(ATFishDataObject *)fishObject;
 - (void)configureTemperatureCell:(ATFishDataObject *)fishObject;
 - (void)configureECCell:(ATFishDataObject *)fishObject;
+
+
 
 @end

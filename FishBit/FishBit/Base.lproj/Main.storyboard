@@ -100,10 +100,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cellDetailLabel" destination="rQa-hr-fn2" id="lvN-Rv-8F5"/>
-                                            <outlet property="cellImageView" destination="tTh-9f-NwT" id="wQb-f2-1ih"/>
-                                            <outlet property="cellScoreLabel" destination="8H0-2M-CBO" id="FLq-CL-xGs"/>
-                                            <outlet property="cellUnitLabel" destination="yDA-OU-XTy" id="CHe-Xc-sun"/>
+                                            <outlet property="cellDetailLabel" destination="rQa-hr-fn2" id="qed-Ae-m8M"/>
+                                            <outlet property="cellImageView" destination="tTh-9f-NwT" id="vKs-ZA-iel"/>
+                                            <outlet property="cellScoreLabel" destination="8H0-2M-CBO" id="QGB-NN-tTa"/>
+                                            <outlet property="cellUnitLabel" destination="yDA-OU-XTy" id="SVZ-df-o1g"/>
+                                            <segue destination="gL5-8d-S2Q" kind="push" identifier="cellToGraphVC" id="qAF-XT-k5s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -176,27 +177,9 @@
                     <view key="view" contentMode="scaleToFill" id="zdQ-Jf-NOS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eY3-Uy-vTe">
-                                <rect key="frame" x="18" y="89" width="285" height="200"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Rln-5z-Zq5"/>
-                                </constraints>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="eY3-Uy-vTe" firstAttribute="leading" secondItem="zdQ-Jf-NOS" secondAttribute="leading" constant="18" id="20g-Cz-G8D"/>
-                            <constraint firstItem="eY3-Uy-vTe" firstAttribute="top" secondItem="akM-CA-kQr" secondAttribute="bottom" constant="25" id="CV4-rc-12Z"/>
-                            <constraint firstAttribute="trailing" secondItem="eY3-Uy-vTe" secondAttribute="trailing" constant="17" id="y2U-vm-RGi"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SRm-K0-ETj"/>
-                    <connections>
-                        <outlet property="chartWebView" destination="eY3-Uy-vTe" id="guG-om-p3d"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Z3-5e-cXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

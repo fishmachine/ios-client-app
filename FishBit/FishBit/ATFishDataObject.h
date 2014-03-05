@@ -14,6 +14,7 @@
 @property CGFloat pHLevel;
 @property CGFloat salinityLevel;
 @property CGFloat ecLevel;
+@property NSDate *created;
 
 
 @end

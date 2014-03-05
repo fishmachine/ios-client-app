@@ -14,5 +14,11 @@
 }
 
 @property (nonatomic, strong) NSString *titleString;
+@property (nonatomic, strong) NSString *unitString;
+
+@property (nonatomic, strong) NSString *leftMostNumberString;
+@property (nonatomic, strong) NSString *rightMostString;
+
+@property (nonatomic, strong) NSArray *arrayOfData;
 
 @end

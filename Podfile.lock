@@ -17,16 +17,19 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
+  - JBChartView (1.1.6)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
+  - JBChartView (~> 1.1.6)
   - MagicalRecord
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  JBChartView: 9e456958366ac7191139b1666f467b96c273a160
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
 
 COCOAPODS: 0.29.0

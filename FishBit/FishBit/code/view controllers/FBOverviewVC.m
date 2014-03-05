@@ -30,6 +30,8 @@
     
     __weak IBOutlet UIActivityIndicatorView *spindicator;
     NSDate *dateLastSynced;
+    
+    NSDateFormatter *df;
 }
 - (IBAction)syncAction:(id)sender;
 
@@ -55,6 +57,10 @@
 	// Do any additional setup after loading the view.
     
     [self setUpAppearances];
+    
+    df = [NSDateFormatter new];
+    [df setDateFormat:@"hh:mm a"];
+
 
     [self queryParseForObjects];
 }
@@ -94,6 +100,7 @@
 {
     [spindicator startAnimating];
     PFQuery *query = [PFQuery queryWithClassName:@"Proto1"];
+
     [query orderByDescending:@"createdAt"];
     query.limit = 50;
     self.arrayOfFishDataObjects = [NSMutableArray new];
@@ -103,8 +110,9 @@
             PFObject *individualDataPoint = obj;
             ATFishDataObject *fishDataPoint = [ATFishDataObject new];
             fishDataPoint.ecLevel = [[individualDataPoint objectForKey:@"ec"] integerValue] / 100.0;
-            fishDataPoint.temperatureLevel = [[individualDataPoint objectForKey:@"temp"] floatValue];
+            fishDataPoint.temperatureLevel = (((([[individualDataPoint objectForKey:@"temp"] floatValue])  * 9) / 5) + 32);
             fishDataPoint.pHLevel = [[individualDataPoint objectForKey:@"ph"] floatValue];
+            fishDataPoint.created = [obj createdAt];
             [self.arrayOfFishDataObjects addObject:fishDataPoint];
         }];
         
@@ -261,14 +269,20 @@
     if ([segue.identifier isEqualToString:SEGUE_OVERVIEW_TO_GRAPH_VC]) {
         
         FBIndividualLevelViewController *ILVC = [segue destinationViewController];
+        FBOverviewCells *cell = ((FBOverviewCells*)[tableViewOfFishData cellForRowAtIndexPath:index]);
         
         if (index.row == 0) {
-            ILVC.title = @"Temperature";
+            ILVC.titleString = @"Temperature";
         } else if (index.row == 1) {
-            ILVC.title = @"pH";
+            ILVC.titleString = @"pH";
         } else if (index.row == 2) {
-            ILVC.title = @"Salinity";
+            ILVC.titleString = @"Electrical Conductivity";
         }
+        ILVC.unitString = cell.cellUnitLabel.text;
+        ILVC.arrayOfData = self.arrayOfFishDataObjects;
+        ILVC.leftMostNumberString = [df stringFromDate:((ATFishDataObject*)[self.arrayOfFishDataObjects objectAtIndex:49]).created];
+        ILVC.rightMostString = [df stringFromDate:((ATFishDataObject*)[self.arrayOfFishDataObjects objectAtIndex:0]).created];
+
     }
 }
 

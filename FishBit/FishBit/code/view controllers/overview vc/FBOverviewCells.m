@@ -10,13 +10,8 @@
 #import "UIColor+FBColors.h"
 
 @implementation FBOverviewCells
-{
-    __weak IBOutlet UIImageView *cellImageView;
-    __weak IBOutlet UILabel *cellDetailLabel;
-    __weak IBOutlet UILabel *cellScoreLabel;
-    
-    __weak IBOutlet UILabel *cellUnitLabel;
-}
+@synthesize cellDetailLabel, cellImageView, cellScoreLabel, cellUnitLabel;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -65,7 +60,7 @@
 
 - (void)configureTemperatureCell:(ATFishDataObject *)fishObject
 {
-    cellScoreLabel.text = [NSString stringWithFormat:@"%.2f", [self getFahrenheitFromCelsius:fishObject.temperatureLevel]];
+    cellScoreLabel.text = [NSString stringWithFormat:@"%.2f", fishObject.temperatureLevel];
     cellDetailLabel.text = @"Temperature";
     cellUnitLabel.text = @"°F";
     cellUnitLabel.textColor = [UIColor FBGrey];
