@@ -10,7 +10,7 @@ CGFloat const kJBLineChartViewControllerChartHeight = 250.0f;
 CGFloat const kJBLineChartViewControllerChartHeaderHeight = 75.0f;
 CGFloat const kJBLineChartViewControllerChartHeaderPadding = 20.0f;
 CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
-CGFloat const kJBLineChartViewControllerChartLineWidth = 6.0f;
+CGFloat const kJBLineChartViewControllerChartLineWidth = 2.1f;
 NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 #import "FBIndividualLevelViewController.h"
 
@@ -21,6 +21,7 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 #import "JBChartInformationView.h"
 #import "ATConstants.h"
 #import "ATFishDataObject.h"
+#import "UIColor+FBColors.h"
 
 @interface FBIndividualLevelViewController () <JBLineChartViewDelegate, JBLineChartViewDataSource>
 {
@@ -50,17 +51,7 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 
 - (void)initData
 {
- //   NSMutableArray *mutableChartData = [NSMutableArray array];
-//    [self.arrayOfData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        if ([self.titleString isEqualToString:@"Electric Conductivity"]) {
-//            [mutableChartData addObject:[NSNumber numberWithFloat:((ATFishDataObject*)obj).ecLevel]];
-//        } else if ([self.titleString isEqualToString:@"ph"]) {
-//            [mutableChartData addObject:[NSNumber numberWithFloat:((ATFishDataObject*)obj).ecLevel]];
-//        } else if ([self.titleString isEqualToString:@"Temperature"]) {
-//            [mutableChartData addObject:[NSNumber numberWithFloat:((ATFishDataObject*)obj).ecLevel]];
-//        }
-//    }];
-    self.chartData = [NSArray arrayWithArray:self.arrayOfData];
+    self.chartData = [[self.arrayOfData reverseObjectEnumerator] allObjects];
 }
 
 - (void)viewDidLoad
@@ -97,7 +88,7 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
 
 - (void)setUpChartViews
 {
-    //self.view.backgroundColor = kJBColorLineChartControllerBackground;
+    self.view.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:169.0f/255.0f blue:216.0f/255.0f alpha:1];
     //self.navigationItem.rightBarButtonItem = [self chartToggleButtonWithTarget:self action:@selector(chartToggleButtonPressed:)];
     
     self.lineChartView = [[JBLineChartView alloc] init];
@@ -105,18 +96,18 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
     self.lineChartView.delegate = self;
     self.lineChartView.dataSource = self;
     self.lineChartView.headerPadding = kJBLineChartViewControllerChartHeaderPadding;
-    self.lineChartView.backgroundColor = [UIColor grayColor];
+    self.lineChartView.backgroundColor = [UIColor clearColor];
     
     JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
     headerView.titleLabel.text = [self.titleString uppercaseString];
-    headerView.titleLabel.textColor = [UIColor yellowColor];
-    headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    headerView.titleLabel.textColor = [UIColor whiteColor];
+    headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.40];
     headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
     headerView.subtitleLabel.text = [self.unitString uppercaseString];
-    headerView.subtitleLabel.textColor = [UIColor cyanColor];
-    headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    headerView.subtitleLabel.textColor = [UIColor whiteColor];
+    headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.405];
     headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.separatorColor = [UIColor redColor];
+    headerView.separatorColor = [UIColor whiteColor];
     self.lineChartView.headerView = headerView;
     
     JBLineChartFooterView *footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartFooterHeight)];
@@ -131,10 +122,10 @@ NSInteger const kJBLineChartViewControllerNumChartPoints = 50;
     [self.view addSubview:self.lineChartView];
     
     self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame)) layout:JBChartInformationViewLayoutVertical];
-    [self.informationView setValueAndUnitTextColor:[UIColor redColor]];
-    [self.informationView setTitleTextColor:[UIColor redColor]];
+    [self.informationView setValueAndUnitTextColor:[UIColor whiteColor]];
+    [self.informationView setTitleTextColor:[UIColor whiteColor]];
     [self.informationView setTextShadowColor:nil];
-    [self.informationView setSeparatorColor:[UIColor blackColor]];
+    [self.informationView setSeparatorColor:[UIColor whiteColor]];
     [self.view addSubview:self.informationView];
     
     [self.lineChartView reloadData];

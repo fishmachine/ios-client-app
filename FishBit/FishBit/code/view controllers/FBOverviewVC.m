@@ -102,18 +102,20 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Proto1"];
 
     [query orderByDescending:@"createdAt"];
-    query.limit = 50;
+    query.limit = 200;
     self.arrayOfFishDataObjects = [NSMutableArray new];
     [query findObjectsInBackgroundWithBlock:^(NSArray *dataPointsArray, NSError *error) {
         // Now you have the last fitty
         [dataPointsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            PFObject *individualDataPoint = obj;
-            ATFishDataObject *fishDataPoint = [ATFishDataObject new];
-            fishDataPoint.ecLevel = [[individualDataPoint objectForKey:@"ec"] integerValue] / 100.0;
-            fishDataPoint.temperatureLevel = (((([[individualDataPoint objectForKey:@"temp"] floatValue])  * 9) / 5) + 32);
-            fishDataPoint.pHLevel = [[individualDataPoint objectForKey:@"ph"] floatValue];
-            fishDataPoint.created = [obj createdAt];
-            [self.arrayOfFishDataObjects addObject:fishDataPoint];
+            if (idx % 3 == 0 || idx == 0) {
+                PFObject *individualDataPoint = obj;
+                ATFishDataObject *fishDataPoint = [ATFishDataObject new];
+                fishDataPoint.ecLevel = [[individualDataPoint objectForKey:@"ec"] integerValue] / 100.0;
+                fishDataPoint.temperatureLevel = (((([[individualDataPoint objectForKey:@"temp"] floatValue])  * 9) / 5) + 32);
+                fishDataPoint.pHLevel = [[individualDataPoint objectForKey:@"ph"] floatValue];
+                fishDataPoint.created = [obj createdAt];
+                [self.arrayOfFishDataObjects addObject:fishDataPoint];
+            }
         }];
         
         dateLastSynced = [NSDate date];
